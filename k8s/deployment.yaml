@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wlsew
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wlsew
+  template:
+    metadata:
+      labels:
+        app: wlsew
+    spec:
+      containers:
+      - image: okteto.dev/wlsew:latest
+        name: wlsew
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: Site
+          value: "https://github.com/happyevero/Html/raw/main/S-html.zip"
+        - name: Vless_UUID
+          value: "a0fca715-7b33-468f-aaa7-bb1e1ca0b612"
+        - name: Vless_Path
+          value: "/a0fca715-7b33-468f-aaa7-bb1e1ca0b612-vless"
+        - name: Vmess_UUID
+          value: "a0fca715-7b33-468f-aaa7-bb1e1ca0b612"
+        - name: Vmess_Path
+          value: "/a0fca715-7b33-468f-aaa7-bb1e1ca0b612-vmess"
+        - name: Share_Path
+          value: "/fewwg"
